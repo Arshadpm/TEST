@@ -28,18 +28,18 @@
 
 .sign-in-title {
   font-family: "Noto Sans", sans-serif;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 1.5;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 42px;
   color: #333;
   margin-bottom: 0.25rem;
 }
 
 .new-user-text {
   font-family: "Noto Sans", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.5;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
   margin-bottom: 1rem;
   color: #333;
 }
@@ -47,7 +47,7 @@
 .create-account-link {
   color: #0066cc;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .login-right-section {
@@ -91,18 +91,22 @@
 .form-input {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #ccc;
+  border: 2px solid #3e3e3e;
   border-radius: 2px;
   font-family: "Noto Sans", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
   color: #333;
   box-sizing: border-box;
-  height: 36px;
+  height: 42px;
 }
 
 .form-input::placeholder {
   font-family: "Noto Sans", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 100%;
   color: #999;
 }
 
@@ -123,7 +127,7 @@
   height: 14px;
   margin: 0;
   cursor: pointer;
-  border: 1px solid #333;
+  border: 2px solid #000000;
   border-radius: 2px;
   appearance: none;
   -webkit-appearance: none;
@@ -148,8 +152,9 @@
 
 .form-check-label {
   font-family: "Noto Sans", sans-serif;
-  font-size: 14px;
-  font-weight: normal;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
   color: #333;
   cursor: pointer;
   margin: 0;
@@ -164,11 +169,12 @@
   background-color: #333;
   color: white;
   font-family: "Noto Sans", sans-serif;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
   cursor: pointer;
   margin-bottom: 1.5rem;
-  height: 36px;
+  height: 42px;
   display: block;
 }
 
@@ -193,8 +199,9 @@
   padding: 0 10px;
   color: #666;
   font-family: "Noto Sans", sans-serif;
-  font-size: 12px;
-  font-weight: normal;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
   white-space: nowrap;
 }
 
@@ -249,6 +256,7 @@
   }
 
   .sign-in-title {
-    font-size: 20px;
+    font-size: 28px;
+    line-height: 38px;
   }
 }
