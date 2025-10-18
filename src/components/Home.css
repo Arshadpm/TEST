@@ -139,7 +139,7 @@
   width: 100%;
   height: 100%;
   display: flex;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Improved easing for smoother motion */
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slider-slide {
@@ -167,8 +167,6 @@
   z-index: 2;
   transition: color 0.3s ease;
 }
-
-/* Old positioning styles removed - now using bottom controls */
 
 /* Dot Indicators */
 .slider-dots {
@@ -207,17 +205,24 @@
   transform: scale(1.1);
 }
 
-/* Bottom Navigation Controls */
+.main-slider-content {
+  position: relative;
+}
+
 .slider-bottom-controls {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  width: 100%;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
-  margin-top: 20px;
-  padding: 10px 0;
+  gap: 20px;
+  z-index: 2;
+  margin-top: 0;
 }
 
-/* Updated Navigation Arrows for Unicode Characters */
 .slider-arrow {
   font-size: 1.6rem;
   color: #333;
@@ -244,7 +249,6 @@
   transition: transform 0.3s ease;
 }
 
-/* Updated Dot Indicators for Bottom Position */
 .slider-dots {
   display: flex;
   gap: 8px;
@@ -273,15 +277,15 @@
   position: relative;
   transition: all 0.3s ease;
   box-shadow: 6px 6px 0 #dbd7d7;
-  padding: 15px;
+  padding: 8px;
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
 .country-flag-small {
-  width: 50px;
-  height: 35px;
+  width: 65px;
+  height: 50px;
   overflow: hidden;
   border-radius: 0;
   display: flex;
@@ -324,8 +328,8 @@
 }
 
 .social-links .social-btn {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   border: 2px solid #333;
   color: #333;
@@ -368,27 +372,27 @@
   transform: rotate(-180deg);
 }
 
-.mobile-nav {
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  margin-top: 0.5rem;
-  padding: 0.5rem !important;
+.mobile-menu-wrapper {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.mobile-nav .nav-link {
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  margin-bottom: 0.25rem;
+@media (max-width: 768px) {
+  .mobile-menu-wrapper {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    z-index: 1050;
+    width: 60%;
+  }
+
+  .mobile-nav {
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 }
 
-.mobile-nav .nav-link:hover,
-.mobile-nav .nav-link.active {
-  background-color: #e9ecef;
-}
-
-/* Mobile First Responsive Design */
 @media (max-width: 991.98px) {
-  /* Tablet Layout */
   .welcome-title-container {
     gap: 1.5rem;
   }
@@ -404,7 +408,6 @@
 }
 
 @media (max-width: 767.98px) {
-  /* Mobile Layout - Stack everything vertically */
   .home-header {
     padding: 1rem 0;
   }
@@ -505,7 +508,7 @@
 
   .country-card {
     margin-bottom: 1rem;
-    padding: 12px;
+    padding: 8px;
   }
 
   .country-name {
@@ -517,13 +520,12 @@
   }
 
   .country-flag-small {
-    width: 40px;
-    height: 30px;
+    width: 60px;
+    height: 45px;
   }
 }
 
 @media (max-width: 575.98px) {
-  /* Extra Small Mobile Devices */
   .home-header {
     padding: 0.75rem 0;
   }
@@ -609,7 +611,7 @@
 
   .country-card {
     margin-bottom: 1rem;
-    padding: 10px;
+    padding: 8px;
   }
 
   .country-name {
@@ -621,13 +623,12 @@
   }
 
   .country-flag-small {
-    width: 35px;
-    height: 25px;
+    width: 55px;
+    height: 45px;
   }
 }
 
 @media (max-width: 480px) {
-  /* Ultra Small Mobile Devices */
   .home-header .nav {
     flex-direction: column;
     align-items: center;
@@ -660,13 +661,11 @@
   }
 }
 
-/* Container uses Flexbox */
 .welcome-container-perfect {
   display: flex;
-  align-items: center; /* Vertically centers the text */
+  align-items: center;
   justify-content: center;
   width: 100%;
-  /* Set a small height to minimize unnecessary space */
   height: 45px;
   margin: 0;
   padding: 30px 0;
@@ -674,36 +673,57 @@
 
 .welcome-text-perfect {
   margin: 0 30px;
-  font-size: 2.5em; /* e.g., 40px */
+  font-size: 2.5em;
   font-weight: 700;
   color: #333;
   letter-spacing: 5px;
-  /* Setting line-height to 1 is crucial for consistent vertical centering */
   line-height: 1;
 }
 
 .line {
   flex-grow: 1;
-  height: 2px; /* Thickness of the line */
+  height: 2px;
   background-color: #a0a0a0;
   max-width: 40%;
-  position: relative; /* Needed to make the transform relative to its final position */
+  position: relative;
 }
 
-/* Specific alignment for the left line (TOP - Cap Height) */
 .line-top-perfect {
   align-self: flex-start;
-  /* Adjust this value based on your font-size (2.5em/40px). 
-     Negative values move UP, positive values move DOWN. 
-     This value (15px) pushes the line down from the container's top edge
-     to match the text cap height. */
+
   transform: translateY(14px);
 }
 
-/* Specific alignment for the right line (BOTTOM - Baseline) */
 .line-bottom-perfect {
   align-self: flex-end;
-  /* This value (-15px) pulls the line UP from the container's bottom edge 
-     to match the text's baseline. */
   transform: translateY(-12px);
+}
+
+@media (max-width: 768px) {
+  .welcome-container-perfect {
+    flex-direction: column;
+    height: auto;
+    gap: 0.5rem;
+  }
+
+  .line {
+    max-width: 100%;
+    width: 100%;
+    transform: none !important;
+    align-self: center;
+  }
+
+  .line-top-perfect {
+    order: -1;
+  }
+
+  .welcome-text-perfect {
+    order: 0;
+    font-size: 24px;
+    margin: 0;
+  }
+
+  .line-bottom-perfect {
+    order: 1;
+  }
 }

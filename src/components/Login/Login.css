@@ -1,22 +1,48 @@
+/* Main container */
 .login-container {
   min-height: 100vh;
   background-color: #fff;
   display: flex;
   overflow: hidden;
   width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
-.login-form-section {
+.login-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Left: Login Form */
+.login-left {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  height: 100vh;
+  background-color: #fff;
+}
+
+.login-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.login-right img.person-illustration {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
 }
 
 .login-form-wrapper {
   width: 100%;
-  max-width: 380px;
+  max-width: 300px;
   padding: 1rem;
 }
 
@@ -27,18 +53,18 @@
 
 .sign-in-title {
   font-family: "Noto Sans", sans-serif;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 1.5;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 42px;
   color: #333;
-  margin-bottom: 0.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .new-user-text {
   font-family: "Noto Sans", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.5;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
   margin-bottom: 1rem;
   color: #333;
 }
@@ -46,50 +72,34 @@
 .create-account-link {
   color: #0066cc;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 700;
+  margin-left: 0.5rem;
 }
 
-.login-image-section {
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  background-color: #f8f8f8;
-}
-
-.login-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-/* Form styling */
 .form-group {
   margin-bottom: 1rem;
-  display: flex;
-  justify-content: flex-start;
 }
 
 .form-input {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #ccc;
+  border: 2px solid #3e3e3e;
   border-radius: 2px;
   font-family: "Noto Sans", sans-serif;
-  font-size: 14px;
-  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #3e3e3e;
   box-sizing: border-box;
-  height: 40px;
+  height: 42px;
 }
 
 .form-input::placeholder {
   font-family: "Noto Sans", sans-serif;
   font-size: 14px;
-  color: #999;
+  font-weight: 600;
+  line-height: 100%;
+  color: #595959;
 }
 
 .form-input:focus {
@@ -97,64 +107,80 @@
   border-color: #666;
 }
 
-.form-check {
+.error-text {
+  display: block;
+  font-size: 14px;
+  color: red;
+  margin-top: 4px;
+  font-family: "Noto Sans", sans-serif;
+}
+
+/* Checkbox */
+.checkbox-container {
   display: flex;
   align-items: center;
   gap: 8px;
+  font-family: "Noto Sans", sans-serif;
+  margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-.form-check-input {
-  width: 14px;
-  height: 14px;
-  margin: 0;
-  cursor: pointer;
-  border: 1px solid #555;
-  border-radius: 2px;
+.custom-checkbox {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #000000;
   background-color: transparent;
+  cursor: pointer;
   position: relative;
+  margin: 0;
+  padding: 0;
 }
 
-.form-check-input:checked {
-  background-color: #333;
+.custom-checkbox:checked {
+  background-color: #000000;
 }
 
-.form-check-input:checked::after {
+.custom-checkbox:checked::after {
   content: "✓";
+  color: white;
   position: absolute;
-  font-size: 9px;
+  font-size: 12px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  line-height: 1;
 }
 
 .form-check-label {
   font-family: "Noto Sans", sans-serif;
-  font-size: 14px;
-  font-weight: normal;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
   color: #333;
   cursor: pointer;
   margin: 0;
   user-select: none;
 }
 
+/* Submit button */
 .submit-button {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.5rem;
   border: none;
-  border-radius: 2px;
+  border-radius: 0;
   background-color: #333;
   color: white;
   font-family: "Noto Sans", sans-serif;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
   cursor: pointer;
   margin-bottom: 1.5rem;
-  height: 40px;
+  margin-top: 1.5rem;
+  height: 42px;
   display: block;
 }
 
@@ -171,29 +197,31 @@
 
 .line {
   flex-grow: 1;
-  height: 1px;
-  background-color: #ddd;
+  height: 2px;
+  background-color: #3d3d3d;
 }
 
 .or-sign-in-with span {
   padding: 0 10px;
   color: #666;
   font-family: "Noto Sans", sans-serif;
-  font-size: 12px;
-  font-weight: normal;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 26px;
   white-space: nowrap;
 }
 
+/* Social buttons */
 .social-login {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
   width: 100%;
 }
 
 .social-button {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border: 1px solid #ccc;
   border-radius: 50%;
   background-color: transparent;
@@ -204,38 +232,59 @@
   cursor: pointer;
 }
 
-.social-button span {
+.social-button i {
   color: #333;
   font-size: 12px;
-  font-weight: 500;
 }
 
 .social-button:hover {
   border-color: #666;
 }
 
-.image-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Footer */
+.footer-email {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  margin-top: 1.5rem;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 767px) {
-  .login-form-section {
-    padding: 1.5rem;
+/* Mobile & Tablet (Responsive) */
+@media (max-width: 991px) {
+  .login-wrapper {
+    flex-direction: column;
+  }
+
+  .login-right {
+    display: none;
+  }
+
+  .login-left {
+    padding: 2rem 1rem;
   }
 
   .login-form-wrapper {
-    padding: 0;
     max-width: 100%;
   }
+}
 
+@media (max-width: 575px) {
   .sign-in-title {
-    font-size: 20px;
+    font-size: 26px;
+    line-height: 36px;
+  }
+
+  .form-input {
+    font-size: 14px;
+    padding: 0.6rem;
+  }
+
+  .submit-button {
+    font-size: 14px;
+  }
+
+  .form-check-label {
+    font-size: 14px;
   }
 }
