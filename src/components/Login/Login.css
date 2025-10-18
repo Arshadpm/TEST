@@ -4,6 +4,7 @@
   display: flex;
   overflow: hidden;
   width: 100%;
+  justify-content: center;
 }
 
 .login-form-section {
@@ -32,7 +33,7 @@
   font-weight: 700;
   line-height: 42px;
   color: #333;
-  margin-bottom: 0.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .new-user-text {
@@ -84,7 +85,7 @@
 /* Form styling */
 .form-group {
   margin-bottom: 1rem;
-  display: flex;
+  /* display: flex; */
   justify-content: flex-start;
 }
 
@@ -97,7 +98,7 @@
   font-size: 16px;
   font-weight: 700;
   line-height: 26px;
-  color: #333;
+  color: #3e3e3e;
   box-sizing: border-box;
   height: 42px;
 }
@@ -107,7 +108,7 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 100%;
-  color: #999;
+  color: #595959;
 }
 
 .form-input:focus {
@@ -118,36 +119,43 @@
 .form-check {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px; /* Slightly increased for breathing room */
   margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  line-height: 1; /* Ensures better vertical alignment */
 }
 
 .form-check-input {
-  width: 14px;
-  height: 14px;
-  margin: 0;
+  width: 16px;
+  height: 16px;
   cursor: pointer;
   border: 2px solid #000000;
-  border-radius: 2px;
+  border-radius: 0;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   background-color: transparent;
   position: relative;
+  display: inline-block;
+  margin: 0;
+  box-sizing: border-box;
+  vertical-align: middle;
+  flex-shrink: 0; /* Prevent resizing */
 }
 
 .form-check-input:checked {
-  background-color: #333;
+  background-color: #000000;
 }
 
 .form-check-input:checked::after {
   content: "✓";
   position: absolute;
-  font-size: 9px;
+  font-size: 12px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  line-height: 1;
 }
 
 .form-check-label {
@@ -159,6 +167,8 @@
   cursor: pointer;
   margin: 0;
   user-select: none;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .submit-button {
@@ -174,6 +184,7 @@
   line-height: 26px;
   cursor: pointer;
   margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
   height: 42px;
   display: block;
 }
@@ -254,9 +265,12 @@
     padding: 0;
     max-width: 100%;
   }
+}
 
-  .sign-in-title {
-    font-size: 28px;
-    line-height: 38px;
-  }
+.error-text {
+  display: block;
+  font-size: 14px;
+  color: red;
+  margin-top: 4px;
+  font-family: "Noto Sans", sans-serif;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
@@ -9,7 +9,20 @@ const Login: React.FC = () => {
     password: "",
     rememberMe: false,
   });
+
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+    auth: "",
+  });
+
   const navigate = useNavigate();
+
+  // Dummy login credentials
+  const dummyUser = {
+    email: "test@example.com",
+    password: "Test@123",
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = e.target;
@@ -17,12 +30,70 @@ const Login: React.FC = () => {
       ...prev,
       [name]: name === "rememberMe" ? checked : value,
     }));
+
+    // Clear errors as user types
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+      auth: "",
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Add login logic here
-    navigate("/home");
+
+    const newErrors = { email: "", password: "", auth: "" };
+    let isValid = true;
+
+    // Email validation
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+      isValid = false;
+    }
+
+    // Password validation
+    if (!formData.password.trim()) {
+      newErrors.password = "Password is required";
+      isValid = false;
+    } else {
+      const password = formData.password;
+      const minLength = password.length >= 8;
+      const hasUppercase = /[A-Z]/.test(password);
+      const hasNumber = /\d/.test(password);
+      const hasSymbol = /[^A-Za-z0-9]/.test(password);
+
+      if (!minLength) {
+        newErrors.password = "Password must be at least 8 characters long";
+        isValid = false;
+      } else if (!hasUppercase) {
+        newErrors.password =
+          "Password must contain at least one uppercase letter";
+        isValid = false;
+      } else if (!hasNumber) {
+        newErrors.password = "Password must contain at least one number";
+        isValid = false;
+      } else if (!hasSymbol) {
+        newErrors.password =
+          "Password must contain at least one special character";
+        isValid = false;
+      }
+    }
+
+    // Check credentials if all fields are valid
+    if (
+      isValid &&
+      (formData.email !== dummyUser.email ||
+        formData.password !== dummyUser.password)
+    ) {
+      newErrors.auth = "Invalid email or password";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+
+    if (isValid) {
+      navigate("/home");
+    }
   };
 
   return (
@@ -39,7 +110,7 @@ const Login: React.FC = () => {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} noValidate>
             <div className="form-group">
               <input
                 type="text"
@@ -47,8 +118,9 @@ const Login: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Username or email"
-                className="form-input"
+                className={`form-input ${errors.email ? "input-error" : ""}`}
               />
+              {errors.email && <div className="error-text">{errors.email}</div>}
             </div>
 
             <div className="form-group">
@@ -60,7 +132,12 @@ const Login: React.FC = () => {
                 placeholder="Password"
                 className="form-input"
               />
+              {errors.password && (
+                <div className="error-text">{errors.password}</div>
+              )}
             </div>
+
+            {errors.auth && <div className="error-text">{errors.auth}</div>}
 
             <div className="form-check">
               <input
