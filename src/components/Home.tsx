@@ -1,15 +1,16 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Container, Row, Col, Button, Nav, Collapse } from "react-bootstrap";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchCountries,
   filterByRegion,
   loadMore,
 } from "../store/slices/countriesSlice";
 import "./Home.css";
+import { AppDispatch } from "../store";
 
 const Home: React.FC = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -20,7 +21,7 @@ const Home: React.FC = () => {
     currentPage,
     itemsPerPage,
     selectedRegion,
-  } = useAppSelector((state) => state.countries);
+  } = useSelector((state: any) => state.countries);
 
   useEffect(() => {
     if (filteredCountries.length === 0 && !loading && !error) {
@@ -235,21 +236,12 @@ const Home: React.FC = () => {
                       className="slider-image"
                     />
                   </div>
-                  {/* <div className="side-slider-content">
-                    <div className="slider-placeholder">
-                      <img
-                        src="/src/assets/images/slider2.jpg"
-                        alt="Side slide"
-                        className="slider-image"
-                      />
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>
 
             <Row>
-              {displayedCountries.map((country, index) => (
+              {displayedCountries.map((country: any, index: number) => (
                 <Col
                   key={`${country.name}-${index}`}
                   lg={6}

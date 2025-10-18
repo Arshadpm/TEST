@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Container, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../store/hooks";
 import { login } from "../../store/slices/authSlice";
 import "./Login.css";
+import { useDispatch } from "react-redux";
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -19,15 +19,8 @@ const Login: React.FC = () => {
   });
 
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleCheckboxChange = (e: any) => {
-    setIsChecked(e.target.checked);
-  };
-
-  // Dummy login credentials
   const dummyUser = {
     email: "test@example.com",
     password: "Test@123",
@@ -40,7 +33,6 @@ const Login: React.FC = () => {
       [name]: name === "rememberMe" ? checked : value,
     }));
 
-    // Clear errors as user types
     setErrors((prev) => ({
       ...prev,
       [name]: "",
@@ -54,13 +46,11 @@ const Login: React.FC = () => {
     const newErrors = { email: "", password: "", auth: "" };
     let isValid = true;
 
-    // Email validation
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
       isValid = false;
     }
 
-    // Password validation
     if (!formData.password.trim()) {
       newErrors.password = "Password is required";
       isValid = false;
@@ -88,7 +78,6 @@ const Login: React.FC = () => {
       }
     }
 
-    // Check credentials if all fields are valid
     if (
       isValid &&
       (formData.email !== dummyUser.email ||
@@ -101,9 +90,7 @@ const Login: React.FC = () => {
     setErrors(newErrors);
 
     if (isValid) {
-      // Dispatch login action to update Redux state
       dispatch(login({ email: formData.email }));
-      // Then navigate to home
       navigate("/home");
     }
   };
@@ -151,19 +138,7 @@ const Login: React.FC = () => {
 
             {errors.auth && <div className="error-text">{errors.auth}</div>}
 
-            {/* <div className="form-check">
-              <input
-                type="checkbox"
-                id="rememberMe"
-                name="rememberMe"
-                checked={formData.rememberMe}
-                onChange={handleChange}
-                className="form-check-input"
-              />
-              <label htmlFor="rememberMe" className="form-check-label">
-                Keep me signed in
-              </label>
-            </div> */}
+            
 
             <div className="checkbox-container">
               <input

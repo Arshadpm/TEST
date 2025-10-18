@@ -9,7 +9,6 @@
   align-items: center;
 }
 
-/* Flex wrapper for form and image */
 .login-wrapper {
   display: flex;
   flex-direction: row;
@@ -27,7 +26,6 @@
   background-color: #fff;
 }
 
-/* Right: Illustration */
 .login-right {
   flex: 1;
   display: flex;
@@ -42,7 +40,6 @@
   object-fit: contain;
 }
 
-/* Login Form Styling */
 .login-form-wrapper {
   width: 100%;
   max-width: 300px;
@@ -191,7 +188,6 @@
   background-color: #444;
 }
 
-/* Divider */
 .or-sign-in-with {
   display: flex;
   align-items: center;
