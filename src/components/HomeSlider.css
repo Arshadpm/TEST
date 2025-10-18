@@ -1,0 +1,95 @@
+/* Responsive styling for the slider */
+@media (max-width: 991px) {
+  .slider-container-home {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .main-slider-wrapper,
+  .side-slider-wrapper {
+    max-width: 100%;
+  }
+
+  .main-slider-content {
+    height: 320px;
+  }
+
+  .side-slider-content {
+    height: 200px;
+  }
+
+  .slider-bottom-controls {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-slider-content {
+    height: 280px;
+  }
+
+  .side-slider-content {
+    height: 180px;
+  }
+
+  .slider-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 1.4rem;
+  }
+
+  .slider-bottom-controls {
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .slider-dots {
+    gap: 10px;
+  }
+
+  .slider-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-slider-content {
+    height: 240px;
+  }
+
+  .side-slider-content {
+    height: 160px;
+  }
+
+  .slider-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+  }
+
+  .slider-bottom-controls {
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .slider-dots {
+    gap: 8px;
+  }
+}
+
+/* Transition animation */
+@keyframes slide-transition {
+  from {
+    transform: scale(0.98);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.transitioning .slider-slide {
+  animation: slide-transition 0.5s ease-out;
+}
