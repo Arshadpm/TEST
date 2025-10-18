@@ -113,8 +113,8 @@ body {
 @media (max-width: 575.98px) {
   .container,
   .container-fluid {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   /* Make buttons full width on small screens */

@@ -1,3 +1,4 @@
+/* Main container */
 .login-container {
   min-height: 100vh;
   background-color: #fff;
@@ -5,17 +6,43 @@
   overflow: hidden;
   width: 100%;
   justify-content: center;
+  align-items: center;
 }
 
-.login-form-section {
+/* Flex wrapper for form and image */
+.login-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Left: Login Form */
+.login-left {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  height: 100vh;
   background-color: #fff;
 }
 
+/* Right: Illustration */
+.login-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.login-right img.person-illustration {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+/* Login Form Styling */
 .login-form-wrapper {
   width: 100%;
   max-width: 300px;
@@ -49,44 +76,11 @@
   color: #0066cc;
   text-decoration: none;
   font-weight: 700;
+  margin-left: 0.5rem;
 }
 
-.login-right-section {
-  height: 100vh;
-  background-color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.login-right-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-}
-
-.login-illustration {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.person-illustration {
-  max-width: 100%;
-  max-height: 350px;
-  object-fit: contain;
-}
-
-/* Form styling */
 .form-group {
   margin-bottom: 1rem;
-  /* display: flex; */
-  justify-content: flex-start;
 }
 
 .form-input {
@@ -105,7 +99,7 @@
 
 .form-input::placeholder {
   font-family: "Noto Sans", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 100%;
   color: #595959;
@@ -116,45 +110,50 @@
   border-color: #666;
 }
 
-.form-check {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Slightly increased for breathing room */
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
-  line-height: 1; /* Ensures better vertical alignment */
+.error-text {
+  display: block;
+  font-size: 14px;
+  color: red;
+  margin-top: 4px;
+  font-family: "Noto Sans", sans-serif;
 }
 
-.form-check-input {
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-  border: 2px solid #000000;
-  border-radius: 0;
+/* Checkbox */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Noto Sans", sans-serif;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.custom-checkbox {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #000000;
   background-color: transparent;
+  cursor: pointer;
   position: relative;
-  display: inline-block;
   margin: 0;
-  box-sizing: border-box;
-  vertical-align: middle;
-  flex-shrink: 0; /* Prevent resizing */
+  padding: 0;
 }
 
-.form-check-input:checked {
+.custom-checkbox:checked {
   background-color: #000000;
 }
 
-.form-check-input:checked::after {
+.custom-checkbox:checked::after {
   content: "✓";
+  color: white;
   position: absolute;
   font-size: 12px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
   line-height: 1;
 }
 
@@ -167,10 +166,9 @@
   cursor: pointer;
   margin: 0;
   user-select: none;
-  display: inline-block;
-  vertical-align: middle;
 }
 
+/* Submit button */
 .submit-button {
   width: 100%;
   padding: 0.5rem;
@@ -193,6 +191,7 @@
   background-color: #444;
 }
 
+/* Divider */
 .or-sign-in-with {
   display: flex;
   align-items: center;
@@ -202,20 +201,21 @@
 
 .line {
   flex-grow: 1;
-  height: 1px;
-  background-color: #ddd;
+  height: 2px;
+  background-color: #3d3d3d;
 }
 
 .or-sign-in-with span {
   padding: 0 10px;
   color: #666;
   font-family: "Noto Sans", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 26px;
   white-space: nowrap;
 }
 
+/* Social buttons */
 .social-login {
   display: flex;
   justify-content: center;
@@ -245,32 +245,50 @@
   border-color: #666;
 }
 
-.image-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Footer */
+.footer-email {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  margin-top: 1.5rem;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 767px) {
-  .login-form-section {
-    padding: 1.5rem;
+/* Mobile & Tablet (Responsive) */
+@media (max-width: 991px) {
+  .login-wrapper {
+    flex-direction: column;
+  }
+
+  .login-right {
+    display: none;
+  }
+
+  .login-left {
+    padding: 2rem 1rem;
   }
 
   .login-form-wrapper {
-    padding: 0;
     max-width: 100%;
   }
 }
 
-.error-text {
-  display: block;
-  font-size: 14px;
-  color: red;
-  margin-top: 4px;
-  font-family: "Noto Sans", sans-serif;
+@media (max-width: 575px) {
+  .sign-in-title {
+    font-size: 26px;
+    line-height: 36px;
+  }
+
+  .form-input {
+    font-size: 14px;
+    padding: 0.6rem;
+  }
+
+  .submit-button {
+    font-size: 14px;
+  }
+
+  .form-check-label {
+    font-size: 14px;
+  }
 }

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Container, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../store/hooks";
+import { login } from "../../store/slices/authSlice";
 import "./Login.css";
 
 const Login: React.FC = () => {
@@ -17,6 +19,13 @@ const Login: React.FC = () => {
   });
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = (e: any) => {
+    setIsChecked(e.target.checked);
+  };
 
   // Dummy login credentials
   const dummyUser = {
@@ -92,6 +101,9 @@ const Login: React.FC = () => {
     setErrors(newErrors);
 
     if (isValid) {
+      // Dispatch login action to update Redux state
+      dispatch(login({ email: formData.email }));
+      // Then navigate to home
       navigate("/home");
     }
   };
@@ -103,7 +115,7 @@ const Login: React.FC = () => {
           <div className="login-header">
             <h1 className="sign-in-title">Sign In</h1>
             <p className="new-user-text">
-              New user?{" "}
+              New user?
               <a href="/signup" className="create-account-link">
                 Create an account
               </a>
@@ -139,7 +151,7 @@ const Login: React.FC = () => {
 
             {errors.auth && <div className="error-text">{errors.auth}</div>}
 
-            <div className="form-check">
+            {/* <div className="form-check">
               <input
                 type="checkbox"
                 id="rememberMe"
@@ -147,6 +159,20 @@ const Login: React.FC = () => {
                 checked={formData.rememberMe}
                 onChange={handleChange}
                 className="form-check-input"
+              />
+              <label htmlFor="rememberMe" className="form-check-label">
+                Keep me signed in
+              </label>
+            </div> */}
+
+            <div className="checkbox-container">
+              <input
+                type="checkbox"
+                id="rememberMe"
+                name="rememberMe"
+                checked={formData.rememberMe}
+                onChange={handleChange}
+                className="custom-checkbox"
               />
               <label htmlFor="rememberMe" className="form-check-label">
                 Keep me signed in
@@ -163,35 +189,25 @@ const Login: React.FC = () => {
               <div className="line"></div>
             </div>
 
-            <div className="social-login">
-              <button
-                type="button"
-                className="social-button"
-                aria-label="Google"
-              >
-                <i className="fab fa-google"></i>
-              </button>
-              <button
-                type="button"
-                className="social-button"
-                aria-label="Facebook"
-              >
-                <i className="fab fa-facebook-f"></i>
-              </button>
-              <button
-                type="button"
-                className="social-button"
-                aria-label="LinkedIn"
-              >
-                <i className="fab fa-linkedin-in"></i>
-              </button>
-              <button
-                type="button"
-                className="social-button"
-                aria-label="Twitter"
-              >
-                <i className="fab fa-twitter"></i>
-              </button>
+            <div className="container">
+              <div className="row py-1">
+                <div className="col text-center">
+                  <div className="social-links mb-4">
+                    <button className="btn btn-outline-dark social-btn me-3">
+                      <i className="fab fa-facebook-f"></i>
+                    </button>
+                    <button className="btn btn-outline-dark social-btn me-3">
+                      <i className="fab fa-twitter"></i>
+                    </button>
+                    <button className="btn btn-outline-dark social-btn me-3">
+                      <i className="fab fa-linkedin-in"></i>
+                    </button>
+                    <button className="btn btn-outline-dark social-btn">
+                      <i className="fab fa-youtube"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </form>
         </div>
