@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import loginImage from "../../assets/images/login-image.png";
 import "./Login.css";
 
 const Login: React.FC = () => {
@@ -28,13 +27,16 @@ const Login: React.FC = () => {
 
   return (
     <Container fluid className="login-container p-0">
-      <Row className="g-0 h-100">
-        <Col md={6} className="login-form-section">
+      {/* <Row className="g-0 h-100"> */}
+        <Col md={5} className="login-form-section">
           <div className="login-form-wrapper">
             <div className="login-header">
               <h1 className="sign-in-title">Sign In</h1>
               <p className="new-user-text">
-                New user? <a href="/signup" className="create-account-link">Create an account</a>
+                New user?{" "}
+                <a href="/signup" className="create-account-link">
+                  Create an account
+                </a>
               </p>
             </div>
 
@@ -91,45 +93,47 @@ const Login: React.FC = () => {
                   className="social-button"
                   aria-label="Google"
                 >
-                  <span>G</span>
+                  <i className="fab fa-google"></i>
                 </button>
                 <button
                   type="button"
                   className="social-button"
                   aria-label="Facebook"
                 >
-                  <span>f</span>
+                  <i className="fab fa-facebook-f"></i>
                 </button>
                 <button
                   type="button"
                   className="social-button"
                   aria-label="LinkedIn"
                 >
-                  <span>in</span>
+                  <i className="fab fa-linkedin-in"></i>
                 </button>
                 <button
                   type="button"
                   className="social-button"
                   aria-label="Twitter"
                 >
-                  <span>T</span>
+                  <i className="fab fa-twitter"></i>
                 </button>
               </div>
             </form>
           </div>
         </Col>
 
-        <Col md={6} className="login-image-section d-none d-md-block">
-          <div className="image-container">
-            <img
-              src={loginImage}
-              alt="Login illustration"
-              className="login-image"
-              loading="eager"
-            />
-          </div>
+        <Col md={3} className="login-right-section d-md-flex d-none">
+            <div className="login-right-content w-100">
+                <div className="login-illustration w-100">
+                    <img
+                        src={require("../../assets/images/login-image.png")}
+                        alt="Person walking"
+                        className="person-illustration"
+                        style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                    />
+                </div>
+            </div>
         </Col>
-      </Row>
+      {/* </Row> */}
     </Container>
   );
 };

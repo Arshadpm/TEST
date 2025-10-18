@@ -12,11 +12,12 @@
   justify-content: center;
   padding: 2rem;
   height: 100vh;
+  background-color: #fff;
 }
 
 .login-form-wrapper {
   width: 100%;
-  max-width: 380px;
+  max-width: 300px;
   padding: 1rem;
 }
 
@@ -49,22 +50,35 @@
   font-weight: 500;
 }
 
-.login-image-section {
+.login-right-section {
   height: 100vh;
-  overflow: hidden;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  background-color: #f8f8f8;
 }
 
-.login-image {
+.login-right-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.login-illustration {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.person-illustration {
+  max-width: 100%;
+  max-height: 350px;
+  object-fit: contain;
 }
 
 /* Form styling */
@@ -83,7 +97,7 @@
   font-size: 14px;
   color: #333;
   box-sizing: border-box;
-  height: 40px;
+  height: 36px;
 }
 
 .form-input::placeholder {
@@ -109,7 +123,7 @@
   height: 14px;
   margin: 0;
   cursor: pointer;
-  border: 1px solid #555;
+  border: 1px solid #333;
   border-radius: 2px;
   appearance: none;
   -webkit-appearance: none;
@@ -144,9 +158,9 @@
 
 .submit-button {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.5rem;
   border: none;
-  border-radius: 2px;
+  border-radius: 0;
   background-color: #333;
   color: white;
   font-family: "Noto Sans", sans-serif;
@@ -154,7 +168,7 @@
   font-size: 14px;
   cursor: pointer;
   margin-bottom: 1.5rem;
-  height: 40px;
+  height: 36px;
   display: block;
 }
 
@@ -187,13 +201,13 @@
 .social-login {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
   width: 100%;
 }
 
 .social-button {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border: 1px solid #ccc;
   border-radius: 50%;
   background-color: transparent;
@@ -204,10 +218,9 @@
   cursor: pointer;
 }
 
-.social-button span {
+.social-button i {
   color: #333;
   font-size: 12px;
-  font-weight: 500;
 }
 
 .social-button:hover {
